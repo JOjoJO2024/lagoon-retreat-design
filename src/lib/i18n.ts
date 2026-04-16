@@ -12,6 +12,7 @@ type Dict = {
   gallery: {
     eyebrow: string; title: string;
     pool: string; openspace: string; living: string; sofa: string; kitchen: string; mural: string; balcony: string; entrance: string;
+    bedroom: string; bedroomYellow: string; bathroom: string; hallway: string;
   };
   features: { pine: string; pool: string; beach: string; ferry: string };
   about: {
