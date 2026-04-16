@@ -49,6 +49,10 @@ export const translations: Record<Lang, Dict> = {
       mural: "Murale Lagunare",
       balcony: "Balcone",
       entrance: "Ingresso",
+      bedroom: "Camera Matrimoniale",
+      bedroomYellow: "Camera Giallo Senape",
+      bathroom: "Bagno Lagunare",
+      hallway: "Corridoio & Armadi",
     },
     features: { pine: "Vista sulla pineta", pool: "Piscina", beach: "Spiaggia a piedi", ferry: "5 min dal ferry per Venezia" },
     about: {
@@ -118,6 +122,10 @@ export const translations: Record<Lang, Dict> = {
       mural: "Lagoon Mural",
       balcony: "Balcony",
       entrance: "Entrance",
+      bedroom: "Master Bedroom",
+      bedroomYellow: "Mustard Bedroom",
+      bathroom: "Lagoon Bathroom",
+      hallway: "Hallway & Wardrobes",
     },
     features: { pine: "Pine forest views", pool: "Swimming pool", beach: "Beach walkable", ferry: "5 min from Venice ferry" },
     about: {
@@ -187,6 +195,10 @@ export const translations: Record<Lang, Dict> = {
       mural: "Lagunen-Wandbild",
       balcony: "Balkon",
       entrance: "Eingang",
+      bedroom: "Hauptschlafzimmer",
+      bedroomYellow: "Senfgelbes Schlafzimmer",
+      bathroom: "Lagunen-Badezimmer",
+      hallway: "Flur & Schränke",
     },
     features: { pine: "Blick auf den Pinienwald", pool: "Schwimmbad", beach: "Strand zu Fuß erreichbar", ferry: "5 Min. zur Fähre nach Venedig" },
     about: {
