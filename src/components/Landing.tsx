@@ -144,9 +144,9 @@ function LandingInner() {
 
         <Reveal>
           <div className="flex gap-5 overflow-x-auto px-6 pb-6 scrollbar-hide snap-x snap-mandatory md:px-12">
-            {galleryItems.map((item) => (
+            {galleryItems.map((item, i) => (
               <figure
-                key={item.label}
+                key={`${item.label}-${i}`}
                 className="group relative flex-shrink-0 snap-start overflow-hidden rounded-3xl shadow-soft w-[280px] sm:w-[360px] md:w-[420px] h-[360px] md:h-[460px]"
               >
                 <img
