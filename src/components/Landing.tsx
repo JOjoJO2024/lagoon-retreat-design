@@ -11,6 +11,12 @@ import realKitchen from "@/assets/real-kitchen.jpg";
 import realOpenspace from "@/assets/real-openspace.jpg";
 import realMural from "@/assets/real-mural.jpg";
 import realEntrance from "@/assets/real-entrance.jpg";
+import realBedroom1 from "@/assets/real-bedroom-1.jpg";
+import realBedroom2 from "@/assets/real-bedroom-2.jpg";
+import realBedroom3 from "@/assets/real-bedroom-3.jpg";
+import realBathroom2 from "@/assets/real-bathroom-2.jpg";
+import realBathroom4 from "@/assets/real-bathroom-4.jpg";
+import realHallway from "@/assets/real-hallway.jpg";
 import location from "@/assets/location.jpg";
 
 // Address coordinates for Google Maps
@@ -58,6 +64,12 @@ function LandingInner() {
     { label: t.gallery.sofa, src: realSofa },
     { label: t.gallery.kitchen, src: realKitchen },
     { label: t.gallery.mural, src: realMural },
+    { label: t.gallery.bedroomYellow, src: realBedroom1 },
+    { label: t.gallery.bedroom, src: realBedroom2 },
+    { label: t.gallery.bedroom, src: realBedroom3 },
+    { label: t.gallery.bathroom, src: realBathroom2 },
+    { label: t.gallery.bathroom, src: realBathroom4 },
+    { label: t.gallery.hallway, src: realHallway },
     { label: t.gallery.balcony, src: realBalcony },
     { label: t.gallery.entrance, src: realEntrance },
   ];
