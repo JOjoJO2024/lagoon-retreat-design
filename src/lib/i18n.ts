@@ -23,8 +23,9 @@ type Dict = {
   amenities: { eyebrow: string; title: string; items: string[] };
   experiences: {
     eyebrow: string; title: string;
-    items: { title: string; desc: string }[];
+    items: { title: string; desc: string; mapLabel: string; mapQuery: string }[];
   };
+  contact: { whatsappCta: string; callIt: string; callDe: string };
   location: {
     eyebrow: string; title: string;
     address: string; tagline: string;
