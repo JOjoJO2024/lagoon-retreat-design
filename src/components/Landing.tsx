@@ -24,6 +24,14 @@ const MAPS_QUERY = "Via+Paolo+Thaon+di+Revel+58,+Cavallino+Treporti,+Venezia";
 const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`;
 const MAPS_EMBED = `https://www.google.com/maps?q=${MAPS_QUERY}&output=embed`;
 
+// WhatsApp & contact numbers
+const WHATSAPP_IT = "393466023270";
+const WHATSAPP_DE = "4915123706891";
+const PHONE_IT_DISPLAY = "+39 346 6023270";
+const PHONE_DE_DISPLAY = "+49 151 23706891";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_IT}?text=${encodeURIComponent("Ciao! Vorrei informazioni per prenotare Cavallino Treporti.")}`;
+const expMapUrl = (q: string) => `https://www.google.com/maps/search/?api=1&query=${q}`;
+
 function Reveal({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useReveal<HTMLDivElement>();
   return (
