@@ -167,12 +167,13 @@ export const translations: Record<Lang, Dict> = {
       eyebrow: "Beyond the retreat",
       title: "Experiences & Excursions",
       items: [
-        { title: "Venice & Lagoon", desc: "Direct ferry access to St. Mark's, Murano glass workshops, the colorful houses of Burano, and unforgettable sunset tours." },
-        { title: "Beach & Nature", desc: "Long sandy beaches just a short walk away, fragrant pine forest paths, and Adriatic sunsets you'll never forget." },
-        { title: "Outdoor Activities", desc: "Bike rentals along scenic coastal routes, kayak excursions through quiet lagoon canals, and birdwatching in the nature reserve." },
-        { title: "Food & Wine", desc: "Authentic Venetian cuisine, the freshest seafood from the Adriatic, and the sacred ritual of an evening spritz aperitivo." },
+        { title: "Venice & Lagoon", desc: "Direct ferry access to St. Mark's, Murano glass workshops, the colorful houses of Burano, and unforgettable sunset tours.", mapLabel: "Open in Maps", mapQuery: "Piazza+San+Marco,+Venezia" },
+        { title: "Beach & Nature", desc: "Long sandy beaches just a short walk away, fragrant pine forest paths, and Adriatic sunsets you'll never forget.", mapLabel: "Open in Maps", mapQuery: "Spiaggia+Cavallino+Treporti,+Venezia" },
+        { title: "Outdoor Activities", desc: "Bike rentals along scenic coastal routes, kayak excursions through quiet lagoon canals, and birdwatching in the nature reserve.", mapLabel: "Open in Maps", mapQuery: "Oasi+Naturalistica+Cavallino+Treporti" },
+        { title: "Food & Wine", desc: "Authentic Venetian cuisine, the freshest seafood from the Adriatic, and the sacred ritual of an evening spritz aperitivo.", mapLabel: "Open in Maps", mapQuery: "Restaurants+Cavallino+Treporti,+Venezia" },
       ],
     },
+    contact: { whatsappCta: "WhatsApp for bookings", callIt: "Italy", callDe: "Germany" },
     location: {
       eyebrow: "Where to find us",
       title: "Location",
