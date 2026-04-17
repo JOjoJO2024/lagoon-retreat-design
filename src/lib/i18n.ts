@@ -93,12 +93,13 @@ export const translations: Record<Lang, Dict> = {
       eyebrow: "Oltre il rifugio",
       title: "Esperienze ed Escursioni",
       items: [
-        { title: "Venezia & Laguna", desc: "Accesso diretto in ferry a San Marco, le vetrerie di Murano, le case colorate di Burano e indimenticabili tour al tramonto." },
-        { title: "Spiaggia & Natura", desc: "Lunghe spiagge sabbiose a pochi passi, sentieri profumati nella pineta e tramonti adriatici da non dimenticare." },
-        { title: "Attività All'aperto", desc: "Noleggio bici lungo percorsi costieri, escursioni in kayak nei canali silenziosi della laguna e birdwatching nella riserva naturale." },
-        { title: "Cibo & Vino", desc: "Cucina veneziana autentica, pesce freschissimo dell'Adriatico e il sacro rituale dello spritz serale." },
+        { title: "Venezia & Laguna", desc: "Accesso diretto in ferry a San Marco, le vetrerie di Murano, le case colorate di Burano e indimenticabili tour al tramonto.", mapLabel: "Apri su Maps", mapQuery: "Piazza+San+Marco,+Venezia" },
+        { title: "Spiaggia & Natura", desc: "Lunghe spiagge sabbiose a pochi passi, sentieri profumati nella pineta e tramonti adriatici da non dimenticare.", mapLabel: "Apri su Maps", mapQuery: "Spiaggia+Cavallino+Treporti,+Venezia" },
+        { title: "Attività All'aperto", desc: "Noleggio bici lungo percorsi costieri, escursioni in kayak nei canali silenziosi della laguna e birdwatching nella riserva naturale.", mapLabel: "Apri su Maps", mapQuery: "Oasi+Naturalistica+Cavallino+Treporti" },
+        { title: "Cibo & Vino", desc: "Cucina veneziana autentica, pesce freschissimo dell'Adriatico e il sacro rituale dello spritz serale.", mapLabel: "Apri su Maps", mapQuery: "Ristoranti+Cavallino+Treporti,+Venezia" },
       ],
     },
+    contact: { whatsappCta: "WhatsApp per prenotazioni", callIt: "Italia", callDe: "Deutschland" },
     location: {
       eyebrow: "Dove trovarci",
       title: "Posizione",
