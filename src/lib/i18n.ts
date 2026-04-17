@@ -241,12 +241,13 @@ export const translations: Record<Lang, Dict> = {
       eyebrow: "Jenseits der Wohnung",
       title: "Erlebnisse & Ausflüge",
       items: [
-        { title: "Venedig & Lagune", desc: "Direkter Fährzugang zum Markusplatz, Glasbläsereien in Murano, die bunten Häuser von Burano und unvergessliche Sonnenuntergangstouren." },
-        { title: "Strand & Natur", desc: "Lange Sandstrände nur wenige Schritte entfernt, duftende Pinienwald-Pfade und unvergessliche Adria-Sonnenuntergänge." },
-        { title: "Outdoor-Aktivitäten", desc: "Fahrradverleih entlang malerischer Küstenrouten, Kajakausflüge durch ruhige Lagunenkanäle und Vogelbeobachtung im Naturschutzgebiet." },
-        { title: "Essen & Wein", desc: "Authentische venezianische Küche, fangfrischer Fisch aus der Adria und das heilige Ritual des abendlichen Spritz." },
+        { title: "Venedig & Lagune", desc: "Direkter Fährzugang zum Markusplatz, Glasbläsereien in Murano, die bunten Häuser von Burano und unvergessliche Sonnenuntergangstouren.", mapLabel: "In Maps öffnen", mapQuery: "Piazza+San+Marco,+Venezia" },
+        { title: "Strand & Natur", desc: "Lange Sandstrände nur wenige Schritte entfernt, duftende Pinienwald-Pfade und unvergessliche Adria-Sonnenuntergänge.", mapLabel: "In Maps öffnen", mapQuery: "Spiaggia+Cavallino+Treporti,+Venezia" },
+        { title: "Outdoor-Aktivitäten", desc: "Fahrradverleih entlang malerischer Küstenrouten, Kajakausflüge durch ruhige Lagunenkanäle und Vogelbeobachtung im Naturschutzgebiet.", mapLabel: "In Maps öffnen", mapQuery: "Oasi+Naturalistica+Cavallino+Treporti" },
+        { title: "Essen & Wein", desc: "Authentische venezianische Küche, fangfrischer Fisch aus der Adria und das heilige Ritual des abendlichen Spritz.", mapLabel: "In Maps öffnen", mapQuery: "Restaurants+Cavallino+Treporti,+Venezia" },
       ],
     },
+    contact: { whatsappCta: "WhatsApp für Buchungen", callIt: "Italien", callDe: "Deutschland" },
     location: {
       eyebrow: "So finden Sie uns",
       title: "Lage",
