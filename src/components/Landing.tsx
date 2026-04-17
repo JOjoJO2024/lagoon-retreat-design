@@ -47,7 +47,7 @@ function Header() {
     <header className="absolute top-0 left-0 right-0 z-30 px-6 py-5 md:px-10 md:py-6">
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         <a href="#top" className="font-serif text-lg italic text-white drop-shadow-md md:text-xl">
-          Cavallino Treporti
+          CavallinoTreporti
         </a>
         <nav className="hidden items-center gap-7 text-sm text-white/90 lg:flex">
           <a href="#gallery" className="hover:text-white transition-colors">{t.nav.gallery}</a>
