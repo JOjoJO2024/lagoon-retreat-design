@@ -23,8 +23,9 @@ type Dict = {
   amenities: { eyebrow: string; title: string; items: string[] };
   experiences: {
     eyebrow: string; title: string;
-    items: { title: string; desc: string }[];
+    items: { title: string; desc: string; mapLabel: string; mapQuery: string }[];
   };
+  contact: { whatsappCta: string; callIt: string; callDe: string };
   location: {
     eyebrow: string; title: string;
     address: string; tagline: string;
@@ -92,12 +93,13 @@ export const translations: Record<Lang, Dict> = {
       eyebrow: "Oltre il rifugio",
       title: "Esperienze ed Escursioni",
       items: [
-        { title: "Venezia & Laguna", desc: "Accesso diretto in ferry a San Marco, le vetrerie di Murano, le case colorate di Burano e indimenticabili tour al tramonto." },
-        { title: "Spiaggia & Natura", desc: "Lunghe spiagge sabbiose a pochi passi, sentieri profumati nella pineta e tramonti adriatici da non dimenticare." },
-        { title: "Attività All'aperto", desc: "Noleggio bici lungo percorsi costieri, escursioni in kayak nei canali silenziosi della laguna e birdwatching nella riserva naturale." },
-        { title: "Cibo & Vino", desc: "Cucina veneziana autentica, pesce freschissimo dell'Adriatico e il sacro rituale dello spritz serale." },
+        { title: "Venezia & Laguna", desc: "Accesso diretto in ferry a San Marco, le vetrerie di Murano, le case colorate di Burano e indimenticabili tour al tramonto.", mapLabel: "Apri su Maps", mapQuery: "Piazza+San+Marco,+Venezia" },
+        { title: "Spiaggia & Natura", desc: "Lunghe spiagge sabbiose a pochi passi, sentieri profumati nella pineta e tramonti adriatici da non dimenticare.", mapLabel: "Apri su Maps", mapQuery: "Spiaggia+Cavallino+Treporti,+Venezia" },
+        { title: "Attività All'aperto", desc: "Noleggio bici lungo percorsi costieri, escursioni in kayak nei canali silenziosi della laguna e birdwatching nella riserva naturale.", mapLabel: "Apri su Maps", mapQuery: "Oasi+Naturalistica+Cavallino+Treporti" },
+        { title: "Cibo & Vino", desc: "Cucina veneziana autentica, pesce freschissimo dell'Adriatico e il sacro rituale dello spritz serale.", mapLabel: "Apri su Maps", mapQuery: "Ristoranti+Cavallino+Treporti,+Venezia" },
       ],
     },
+    contact: { whatsappCta: "WhatsApp per prenotazioni", callIt: "Italia", callDe: "Deutschland" },
     location: {
       eyebrow: "Dove trovarci",
       title: "Posizione",
@@ -165,12 +167,13 @@ export const translations: Record<Lang, Dict> = {
       eyebrow: "Beyond the retreat",
       title: "Experiences & Excursions",
       items: [
-        { title: "Venice & Lagoon", desc: "Direct ferry access to St. Mark's, Murano glass workshops, the colorful houses of Burano, and unforgettable sunset tours." },
-        { title: "Beach & Nature", desc: "Long sandy beaches just a short walk away, fragrant pine forest paths, and Adriatic sunsets you'll never forget." },
-        { title: "Outdoor Activities", desc: "Bike rentals along scenic coastal routes, kayak excursions through quiet lagoon canals, and birdwatching in the nature reserve." },
-        { title: "Food & Wine", desc: "Authentic Venetian cuisine, the freshest seafood from the Adriatic, and the sacred ritual of an evening spritz aperitivo." },
+        { title: "Venice & Lagoon", desc: "Direct ferry access to St. Mark's, Murano glass workshops, the colorful houses of Burano, and unforgettable sunset tours.", mapLabel: "Open in Maps", mapQuery: "Piazza+San+Marco,+Venezia" },
+        { title: "Beach & Nature", desc: "Long sandy beaches just a short walk away, fragrant pine forest paths, and Adriatic sunsets you'll never forget.", mapLabel: "Open in Maps", mapQuery: "Spiaggia+Cavallino+Treporti,+Venezia" },
+        { title: "Outdoor Activities", desc: "Bike rentals along scenic coastal routes, kayak excursions through quiet lagoon canals, and birdwatching in the nature reserve.", mapLabel: "Open in Maps", mapQuery: "Oasi+Naturalistica+Cavallino+Treporti" },
+        { title: "Food & Wine", desc: "Authentic Venetian cuisine, the freshest seafood from the Adriatic, and the sacred ritual of an evening spritz aperitivo.", mapLabel: "Open in Maps", mapQuery: "Restaurants+Cavallino+Treporti,+Venezia" },
       ],
     },
+    contact: { whatsappCta: "WhatsApp for bookings", callIt: "Italy", callDe: "Germany" },
     location: {
       eyebrow: "Where to find us",
       title: "Location",
@@ -238,12 +241,13 @@ export const translations: Record<Lang, Dict> = {
       eyebrow: "Jenseits der Wohnung",
       title: "Erlebnisse & Ausflüge",
       items: [
-        { title: "Venedig & Lagune", desc: "Direkter Fährzugang zum Markusplatz, Glasbläsereien in Murano, die bunten Häuser von Burano und unvergessliche Sonnenuntergangstouren." },
-        { title: "Strand & Natur", desc: "Lange Sandstrände nur wenige Schritte entfernt, duftende Pinienwald-Pfade und unvergessliche Adria-Sonnenuntergänge." },
-        { title: "Outdoor-Aktivitäten", desc: "Fahrradverleih entlang malerischer Küstenrouten, Kajakausflüge durch ruhige Lagunenkanäle und Vogelbeobachtung im Naturschutzgebiet." },
-        { title: "Essen & Wein", desc: "Authentische venezianische Küche, fangfrischer Fisch aus der Adria und das heilige Ritual des abendlichen Spritz." },
+        { title: "Venedig & Lagune", desc: "Direkter Fährzugang zum Markusplatz, Glasbläsereien in Murano, die bunten Häuser von Burano und unvergessliche Sonnenuntergangstouren.", mapLabel: "In Maps öffnen", mapQuery: "Piazza+San+Marco,+Venezia" },
+        { title: "Strand & Natur", desc: "Lange Sandstrände nur wenige Schritte entfernt, duftende Pinienwald-Pfade und unvergessliche Adria-Sonnenuntergänge.", mapLabel: "In Maps öffnen", mapQuery: "Spiaggia+Cavallino+Treporti,+Venezia" },
+        { title: "Outdoor-Aktivitäten", desc: "Fahrradverleih entlang malerischer Küstenrouten, Kajakausflüge durch ruhige Lagunenkanäle und Vogelbeobachtung im Naturschutzgebiet.", mapLabel: "In Maps öffnen", mapQuery: "Oasi+Naturalistica+Cavallino+Treporti" },
+        { title: "Essen & Wein", desc: "Authentische venezianische Küche, fangfrischer Fisch aus der Adria und das heilige Ritual des abendlichen Spritz.", mapLabel: "In Maps öffnen", mapQuery: "Restaurants+Cavallino+Treporti,+Venezia" },
       ],
     },
+    contact: { whatsappCta: "WhatsApp für Buchungen", callIt: "Italien", callDe: "Deutschland" },
     location: {
       eyebrow: "So finden Sie uns",
       title: "Lage",

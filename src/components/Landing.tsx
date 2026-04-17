@@ -24,6 +24,14 @@ const MAPS_QUERY = "Via+Paolo+Thaon+di+Revel+58,+Cavallino+Treporti,+Venezia";
 const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`;
 const MAPS_EMBED = `https://www.google.com/maps?q=${MAPS_QUERY}&output=embed`;
 
+// WhatsApp & contact numbers
+const WHATSAPP_IT = "393466023270";
+const WHATSAPP_DE = "4915123706891";
+const PHONE_IT_DISPLAY = "+39 346 6023270";
+const PHONE_DE_DISPLAY = "+49 151 23706891";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_IT}?text=${encodeURIComponent("Ciao! Vorrei informazioni per prenotare Cavallino Treporti.")}`;
+const expMapUrl = (q: string) => `https://www.google.com/maps/search/?api=1&query=${q}`;
+
 function Reveal({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useReveal<HTMLDivElement>();
   return (
@@ -39,7 +47,7 @@ function Header() {
     <header className="absolute top-0 left-0 right-0 z-30 px-6 py-5 md:px-10 md:py-6">
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         <a href="#top" className="font-serif text-lg italic text-white drop-shadow-md md:text-xl">
-          Cavallino Treporti
+          CavallinoTreporti
         </a>
         <nav className="hidden items-center gap-7 text-sm text-white/90 lg:flex">
           <a href="#gallery" className="hover:text-white transition-colors">{t.nav.gallery}</a>
@@ -105,10 +113,7 @@ function LandingInner() {
           </Reveal>
           <Reveal delay={120}>
             <h1 className="font-serif italic text-5xl leading-[1.05] sm:text-7xl md:text-8xl lg:text-9xl">
-              Cavallino
-              <span className="block font-light not-italic tracking-wide text-white/95 text-4xl sm:text-6xl md:text-7xl lg:text-8xl mt-2">
-                Tre Porti
-              </span>
+              CavallinoTreporti
             </h1>
           </Reveal>
           <Reveal delay={240}>
@@ -118,11 +123,27 @@ function LandingInner() {
           </Reveal>
           <Reveal delay={360}>
             <a
-              href="#book"
-              className="mt-10 inline-flex items-center justify-center rounded-full bg-gradient-amber px-10 py-4 text-base font-semibold text-[oklch(0.25_0.04_60)] shadow-warm transition-transform hover:scale-105"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-10 inline-flex items-center justify-center gap-3 rounded-full bg-[#25D366] px-10 py-4 text-base font-semibold text-white shadow-warm transition-transform hover:scale-105 hover:bg-[#1ebe5d]"
             >
-              {t.hero.cta}
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+              </svg>
+              {t.contact.whatsappCta}
             </a>
+          </Reveal>
+          <Reveal delay={460}>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/85">
+              <a href={`tel:${PHONE_IT_DISPLAY.replace(/\s/g, "")}`} className="hover:text-white transition-colors">
+                🇮🇹 {t.contact.callIt}: {PHONE_IT_DISPLAY}
+              </a>
+              <span className="hidden sm:inline text-white/40">·</span>
+              <a href={`tel:${PHONE_DE_DISPLAY.replace(/\s/g, "")}`} className="hover:text-white transition-colors">
+                🇩🇪 {t.contact.callDe}: {PHONE_DE_DISPLAY}
+              </a>
+            </div>
           </Reveal>
         </div>
 
@@ -266,15 +287,27 @@ function LandingInner() {
           <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
             {t.experiences.items.map((e, i) => (
               <Reveal key={e.title} delay={(i % 2) * 120}>
-                <article className="group h-full overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-transform hover:-translate-y-1">
+                <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-transform hover:-translate-y-1">
                   <div className="bg-gradient-teal-amber p-8">
                     <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/30 font-serif text-xl text-white backdrop-blur-sm">
                       {String(i + 1).padStart(2, "0")}
                     </div>
                   </div>
-                  <div className="p-8">
+                  <div className="flex flex-1 flex-col p-8">
                     <h3 className="font-serif text-2xl text-foreground md:text-3xl">{e.title}</h3>
                     <p className="mt-3 leading-relaxed text-muted-foreground">{e.desc}</p>
+                    <a
+                      href={expMapUrl(e.mapQuery)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-[var(--amber-brand)]/60 bg-[var(--amber-brand)]/10 px-5 py-2 text-sm font-medium text-[var(--teal-deep)] transition-colors hover:bg-[var(--amber-brand)]/25"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z" strokeLinecap="round" strokeLinejoin="round" />
+                        <circle cx="12" cy="10" r="3" />
+                      </svg>
+                      {e.mapLabel}
+                    </a>
                   </div>
                 </article>
               </Reveal>
@@ -356,16 +389,29 @@ function LandingInner() {
       <footer id="book" className="bg-[var(--teal-deep)] py-20 text-white md:py-28">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <Reveal>
-            <h2 className="font-serif italic text-4xl md:text-6xl">Cavallino Tre Porti</h2>
+            <h2 className="font-serif italic text-4xl md:text-6xl">CavallinoTreporti</h2>
             <p className="mt-4 italic text-white/75 md:text-lg">{t.footer.tagline}</p>
             <a
-              href="mailto:hello@cavallinotreporti.it"
-              className="mt-10 inline-flex items-center justify-center rounded-full bg-gradient-amber px-10 py-4 text-base font-semibold text-[oklch(0.25_0.04_60)] shadow-warm transition-transform hover:scale-105"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-10 inline-flex items-center justify-center gap-3 rounded-full bg-[#25D366] px-10 py-4 text-base font-semibold text-white shadow-warm transition-transform hover:scale-105 hover:bg-[#1ebe5d]"
             >
-              {t.footer.cta}
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+              </svg>
+              {t.contact.whatsappCta}
             </a>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-white/85">
+              <a href={`tel:${PHONE_IT_DISPLAY.replace(/\s/g, "")}`} className="hover:text-white transition-colors">
+                🇮🇹 {t.contact.callIt}: {PHONE_IT_DISPLAY}
+              </a>
+              <a href={`tel:${PHONE_DE_DISPLAY.replace(/\s/g, "")}`} className="hover:text-white transition-colors">
+                🇩🇪 {t.contact.callDe}: {PHONE_DE_DISPLAY}
+              </a>
+            </div>
             <div className="mt-14 border-t border-white/15 pt-8 text-sm text-white/55">
-              © {new Date().getFullYear()} Cavallino Tre Porti · {t.footer.rights}
+              © {new Date().getFullYear()} CavallinoTreporti · {t.footer.rights}
             </div>
           </Reveal>
         </div>
