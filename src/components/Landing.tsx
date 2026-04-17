@@ -287,15 +287,27 @@ function LandingInner() {
           <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
             {t.experiences.items.map((e, i) => (
               <Reveal key={e.title} delay={(i % 2) * 120}>
-                <article className="group h-full overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-transform hover:-translate-y-1">
+                <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-transform hover:-translate-y-1">
                   <div className="bg-gradient-teal-amber p-8">
                     <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/30 font-serif text-xl text-white backdrop-blur-sm">
                       {String(i + 1).padStart(2, "0")}
                     </div>
                   </div>
-                  <div className="p-8">
+                  <div className="flex flex-1 flex-col p-8">
                     <h3 className="font-serif text-2xl text-foreground md:text-3xl">{e.title}</h3>
                     <p className="mt-3 leading-relaxed text-muted-foreground">{e.desc}</p>
+                    <a
+                      href={expMapUrl(e.mapQuery)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-[var(--amber-brand)]/60 bg-[var(--amber-brand)]/10 px-5 py-2 text-sm font-medium text-[var(--teal-deep)] transition-colors hover:bg-[var(--amber-brand)]/25"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z" strokeLinecap="round" strokeLinejoin="round" />
+                        <circle cx="12" cy="10" r="3" />
+                      </svg>
+                      {e.mapLabel}
+                    </a>
                   </div>
                 </article>
               </Reveal>
