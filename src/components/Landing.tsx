@@ -284,31 +284,29 @@ function LandingInner() {
             <h2 className="mt-3 font-serif text-3xl md:text-5xl">{t.experiences.title}</h2>
           </Reveal>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
+          <div className="mx-auto max-w-3xl divide-y divide-border/70 border-y border-border/70">
             {t.experiences.items.map((e, i) => (
-              <Reveal key={e.title} delay={(i % 2) * 120}>
-                <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-transform hover:-translate-y-1">
-                  <div className="bg-gradient-teal-amber p-8">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/30 font-serif text-xl text-white backdrop-blur-sm">
-                      {String(i + 1).padStart(2, "0")}
-                    </div>
+              <Reveal key={e.title} delay={(i % 2) * 80}>
+                <article className="group grid grid-cols-[auto_1fr_auto] items-center gap-5 py-7 md:gap-8 md:py-9">
+                  <span className="font-serif text-sm text-primary tabular-nums">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="min-w-0">
+                    <h3 className="font-serif text-xl text-foreground md:text-2xl">{e.title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground md:text-base">{e.desc}</p>
                   </div>
-                  <div className="flex flex-1 flex-col p-8">
-                    <h3 className="font-serif text-2xl text-foreground md:text-3xl">{e.title}</h3>
-                    <p className="mt-3 leading-relaxed text-muted-foreground">{e.desc}</p>
-                    <a
-                      href={expMapUrl(e.mapQuery)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-[var(--amber-brand)]/60 bg-[var(--amber-brand)]/10 px-5 py-2 text-sm font-medium text-[var(--teal-deep)] transition-colors hover:bg-[var(--amber-brand)]/25"
-                    >
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z" strokeLinecap="round" strokeLinejoin="round" />
-                        <circle cx="12" cy="10" r="3" />
-                      </svg>
-                      {e.mapLabel}
-                    </a>
-                  </div>
+                  <a
+                    href={expMapUrl(e.mapQuery)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${e.mapLabel} — ${e.title}`}
+                    className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-[var(--amber-brand)]/60 text-[var(--amber-deep)] transition-colors hover:bg-[var(--amber-brand)]/15 md:h-11 md:w-11"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z" strokeLinecap="round" strokeLinejoin="round" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                  </a>
                 </article>
               </Reveal>
             ))}

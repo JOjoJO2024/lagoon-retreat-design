@@ -49,49 +49,49 @@
 :root {
   --radius: 0.75rem;
 
-  /* Warm off-white base */
-  --background: oklch(0.985 0.01 85);
-  --foreground: oklch(0.22 0.03 220);
+  /* Warm sand base */
+  --background: oklch(0.98 0.012 80);
+  --foreground: oklch(0.24 0.035 50);
 
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.03 220);
+  --card-foreground: oklch(0.24 0.035 50);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.03 220);
+  --popover-foreground: oklch(0.24 0.035 50);
 
-  /* Teal as primary */
-  --primary: oklch(0.58 0.11 200);
+  /* Warm amber as primary */
+  --primary: oklch(0.62 0.14 60);
   --primary-foreground: oklch(0.99 0.005 85);
 
-  /* Mustard amber as secondary */
-  --secondary: oklch(0.78 0.15 75);
-  --secondary-foreground: oklch(0.25 0.04 60);
+  /* Warm terracotta as secondary */
+  --secondary: oklch(0.74 0.13 45);
+  --secondary-foreground: oklch(0.25 0.04 50);
 
-  --muted: oklch(0.95 0.015 80);
-  --muted-foreground: oklch(0.5 0.03 220);
-  --accent: oklch(0.92 0.04 200);
-  --accent-foreground: oklch(0.25 0.04 220);
+  --muted: oklch(0.95 0.018 75);
+  --muted-foreground: oklch(0.5 0.03 60);
+  --accent: oklch(0.9 0.05 70);
+  --accent-foreground: oklch(0.25 0.04 50);
 
   --destructive: oklch(0.6 0.22 27);
   --destructive-foreground: oklch(0.99 0.005 85);
-  --border: oklch(0.9 0.015 200);
-  --input: oklch(0.9 0.015 200);
-  --ring: oklch(0.58 0.11 200);
+  --border: oklch(0.9 0.02 70);
+  --input: oklch(0.9 0.02 70);
+  --ring: oklch(0.62 0.14 60);
 
-  /* Brand palette inspired by the apartment */
+  /* Brand palette — warmer, less blue */
   --amber-brand: oklch(0.78 0.15 75);
-  --amber-deep: oklch(0.68 0.17 65);
-  --teal-brand: oklch(0.58 0.11 200);
-  --teal-deep: oklch(0.38 0.08 210);
-  --teal-soft: oklch(0.88 0.05 200);
-  --sage: oklch(0.78 0.03 150);
-  --marble: oklch(0.97 0.005 80);
+  --amber-deep: oklch(0.66 0.17 55);
+  --teal-brand: oklch(0.6 0.09 195);
+  --teal-deep: oklch(0.42 0.07 200);
+  --teal-soft: oklch(0.9 0.04 190);
+  --sage: oklch(0.78 0.04 140);
+  --marble: oklch(0.97 0.012 80);
 
-  --gradient-hero: linear-gradient(135deg, oklch(0.38 0.08 210 / 0.7) 0%, oklch(0.58 0.11 200 / 0.4) 50%, oklch(0.78 0.15 75 / 0.55) 100%);
+  --gradient-hero: linear-gradient(135deg, oklch(0.35 0.06 50 / 0.65) 0%, oklch(0.55 0.12 60 / 0.45) 50%, oklch(0.78 0.15 75 / 0.55) 100%);
   --gradient-amber: linear-gradient(135deg, var(--amber-brand) 0%, var(--amber-deep) 100%);
-  --gradient-teal-amber: linear-gradient(135deg, var(--teal-brand) 0%, var(--amber-brand) 100%);
+  --gradient-teal-amber: linear-gradient(135deg, var(--amber-deep) 0%, var(--amber-brand) 100%);
 
-  --shadow-soft: 0 10px 40px -15px oklch(0.38 0.08 210 / 0.25);
-  --shadow-warm: 0 20px 50px -20px oklch(0.68 0.17 65 / 0.35);
+  --shadow-soft: 0 10px 40px -15px oklch(0.45 0.08 60 / 0.25);
+  --shadow-warm: 0 20px 50px -20px oklch(0.66 0.17 55 / 0.4);
 }
 
 @layer base {
