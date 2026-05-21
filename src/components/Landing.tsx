@@ -426,7 +426,66 @@ function LandingInner() {
 
       {/* Suppress unused location image import warning by keeping reference */}
       <link rel="preload" as="image" href={location} />
+
+      {/* LIGHTBOX */}
+      {lightboxIndex !== null && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={galleryItems[lightboxIndex].label}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
+          onClick={closeLightbox}
+        >
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); closeLightbox(); }}
+            aria-label="Close"
+            className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); prevImg(); }}
+            aria-label="Previous image"
+            className="absolute left-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 md:left-8"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); nextImg(); }}
+            aria-label="Next image"
+            className="absolute right-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 md:right-8"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <figure
+            className="relative flex max-h-full max-w-6xl flex-col items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={galleryItems[lightboxIndex].src}
+              alt={galleryItems[lightboxIndex].label}
+              className="max-h-[85vh] w-auto max-w-full rounded-2xl object-contain shadow-2xl"
+            />
+            <figcaption className="mt-4 text-center font-serif text-base text-white/90 md:text-lg">
+              {galleryItems[lightboxIndex].label}
+              <span className="ml-3 text-sm text-white/50">
+                {lightboxIndex + 1} / {galleryItems.length}
+              </span>
+            </figcaption>
+          </figure>
+        </div>
+      )}
     </main>
+
   );
 }
 
