@@ -1,7 +1,9 @@
+import { useCallback, useEffect, useState } from "react";
 import { useReveal } from "@/hooks/use-reveal";
 import { LangProvider, useLang } from "@/hooks/use-lang";
 import { BubbleDivider } from "@/components/BubbleDivider";
 import { LanguageDropdown } from "@/components/LanguageDropdown";
+
 
 import realPool from "@/assets/real-pool.jpg";
 import realBalcony from "@/assets/real-balcony.jpg";
