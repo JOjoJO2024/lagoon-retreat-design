@@ -1,7 +1,9 @@
+import { useCallback, useEffect, useState } from "react";
 import { useReveal } from "@/hooks/use-reveal";
 import { LangProvider, useLang } from "@/hooks/use-lang";
 import { BubbleDivider } from "@/components/BubbleDivider";
 import { LanguageDropdown } from "@/components/LanguageDropdown";
+
 
 import realPool from "@/assets/real-pool.jpg";
 import realBalcony from "@/assets/real-balcony.jpg";
@@ -82,12 +84,34 @@ function LandingInner() {
     { label: t.gallery.entrance, src: realEntrance },
   ];
 
-  const features = [
-    { mark: "I", label: t.features.pine },
-    { mark: "II", label: t.features.pool },
-    { mark: "III", label: t.features.beach },
-    { mark: "IV", label: t.features.ferry },
-  ];
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const openLightbox = useCallback((i: number) => setLightboxIndex(i), []);
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+  const prevImg = useCallback(
+    () => setLightboxIndex((i) => (i === null ? i : (i - 1 + galleryItems.length) % galleryItems.length)),
+    [galleryItems.length],
+  );
+  const nextImg = useCallback(
+    () => setLightboxIndex((i) => (i === null ? i : (i + 1) % galleryItems.length)),
+    [galleryItems.length],
+  );
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      else if (e.key === "ArrowLeft") prevImg();
+      else if (e.key === "ArrowRight") nextImg();
+    };
+    window.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [lightboxIndex, closeLightbox, prevImg, nextImg]);
+
 
   return (
     <main id="top" className="min-h-screen bg-background text-foreground">
@@ -166,9 +190,12 @@ function LandingInner() {
         <Reveal>
           <div className="flex gap-5 overflow-x-auto px-6 pb-6 scrollbar-hide snap-x snap-mandatory md:px-12">
             {galleryItems.map((item, i) => (
-              <figure
+              <button
+                type="button"
                 key={`${item.label}-${i}`}
-                className="group relative flex-shrink-0 snap-start overflow-hidden rounded-3xl shadow-soft w-[280px] sm:w-[360px] md:w-[420px] h-[360px] md:h-[460px]"
+                onClick={() => openLightbox(i)}
+                aria-label={`${item.label} — open image`}
+                className="group relative flex-shrink-0 snap-start overflow-hidden rounded-3xl shadow-soft w-[280px] sm:w-[360px] md:w-[420px] h-[360px] md:h-[460px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--amber-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-background cursor-pointer"
               >
                 <img
                   src={item.src}
@@ -177,10 +204,11 @@ function LandingInner() {
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[oklch(0.22_0.03_220/0.85)] via-transparent to-transparent" />
-                <figcaption className="absolute bottom-5 left-5 right-5 font-serif text-xl text-white md:text-2xl">
+                <figcaption className="absolute bottom-5 left-5 right-5 text-left font-serif text-xl text-white md:text-2xl">
                   {item.label}
                 </figcaption>
-              </figure>
+              </button>
+
             ))}
           </div>
         </Reveal>
@@ -188,25 +216,6 @@ function LandingInner() {
 
       <BubbleDivider />
 
-      {/* KEY FEATURES */}
-      <section className="bg-[var(--teal-deep)] py-20 text-white md:py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
-            {features.map((f, i) => (
-              <Reveal key={f.label} delay={i * 100}>
-                <div className="rounded-2xl border border-white/15 bg-white/5 p-8 text-center backdrop-blur-sm transition-colors hover:bg-white/10">
-                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-[var(--amber-brand)]/60 font-serif text-xl text-[var(--amber-brand)]">
-                    {f.mark}
-                  </div>
-                  <p className="font-serif text-lg leading-snug">{f.label}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <BubbleDivider flip />
 
       {/* ABOUT */}
       <section id="about" className="py-20 md:py-32">
@@ -417,7 +426,66 @@ function LandingInner() {
 
       {/* Suppress unused location image import warning by keeping reference */}
       <link rel="preload" as="image" href={location} />
+
+      {/* LIGHTBOX */}
+      {lightboxIndex !== null && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={galleryItems[lightboxIndex].label}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
+          onClick={closeLightbox}
+        >
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); closeLightbox(); }}
+            aria-label="Close"
+            className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); prevImg(); }}
+            aria-label="Previous image"
+            className="absolute left-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 md:left-8"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); nextImg(); }}
+            aria-label="Next image"
+            className="absolute right-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 md:right-8"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <figure
+            className="relative flex max-h-full max-w-6xl flex-col items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={galleryItems[lightboxIndex].src}
+              alt={galleryItems[lightboxIndex].label}
+              className="max-h-[85vh] w-auto max-w-full rounded-2xl object-contain shadow-2xl"
+            />
+            <figcaption className="mt-4 text-center font-serif text-base text-white/90 md:text-lg">
+              {galleryItems[lightboxIndex].label}
+              <span className="ml-3 text-sm text-white/50">
+                {lightboxIndex + 1} / {galleryItems.length}
+              </span>
+            </figcaption>
+          </figure>
+        </div>
+      )}
     </main>
+
   );
 }
 
