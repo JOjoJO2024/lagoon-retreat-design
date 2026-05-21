@@ -212,25 +212,6 @@ function LandingInner() {
 
       <BubbleDivider />
 
-      {/* KEY FEATURES */}
-      <section className="bg-[var(--teal-deep)] py-20 text-white md:py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
-            {features.map((f, i) => (
-              <Reveal key={f.label} delay={i * 100}>
-                <div className="rounded-2xl border border-white/15 bg-white/5 p-8 text-center backdrop-blur-sm transition-colors hover:bg-white/10">
-                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-[var(--amber-brand)]/60 font-serif text-xl text-[var(--amber-brand)]">
-                    {f.mark}
-                  </div>
-                  <p className="font-serif text-lg leading-snug">{f.label}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <BubbleDivider flip />
 
       {/* ABOUT */}
       <section id="about" className="py-20 md:py-32">
