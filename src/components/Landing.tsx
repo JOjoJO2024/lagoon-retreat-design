@@ -194,7 +194,7 @@ function LandingInner() {
                 type="button"
                 key={`${item.label}-${i}`}
                 onClick={() => openLightbox(i)}
-                aria-label={`${item.label} — ${t.gallery.openImage ?? "Open image"}`}
+                aria-label={`${item.label} — open image`}
                 className="group relative flex-shrink-0 snap-start overflow-hidden rounded-3xl shadow-soft w-[280px] sm:w-[360px] md:w-[420px] h-[360px] md:h-[460px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--amber-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-background cursor-pointer"
               >
                 <img
