@@ -84,12 +84,34 @@ function LandingInner() {
     { label: t.gallery.entrance, src: realEntrance },
   ];
 
-  const features = [
-    { mark: "I", label: t.features.pine },
-    { mark: "II", label: t.features.pool },
-    { mark: "III", label: t.features.beach },
-    { mark: "IV", label: t.features.ferry },
-  ];
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const openLightbox = useCallback((i: number) => setLightboxIndex(i), []);
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+  const prevImg = useCallback(
+    () => setLightboxIndex((i) => (i === null ? i : (i - 1 + galleryItems.length) % galleryItems.length)),
+    [galleryItems.length],
+  );
+  const nextImg = useCallback(
+    () => setLightboxIndex((i) => (i === null ? i : (i + 1) % galleryItems.length)),
+    [galleryItems.length],
+  );
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      else if (e.key === "ArrowLeft") prevImg();
+      else if (e.key === "ArrowRight") nextImg();
+    };
+    window.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [lightboxIndex, closeLightbox, prevImg, nextImg]);
+
 
   return (
     <main id="top" className="min-h-screen bg-background text-foreground">
