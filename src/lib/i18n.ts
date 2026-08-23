@@ -95,11 +95,16 @@ export const translations: Record<Lang, Dict> = {
     experiences: {
       eyebrow: "Oltre il rifugio",
       title: "Esperienze ed Escursioni",
-      items: [
-        { title: "Venezia & Laguna", desc: "Accesso diretto in ferry a San Marco, le vetrerie di Murano, le case colorate di Burano e indimenticabili tour al tramonto.", mapLabel: "Apri su Maps", mapQuery: "Piazza+San+Marco,+Venezia" },
-        { title: "Spiaggia & Natura", desc: "Lunghe spiagge sabbiose a pochi passi, sentieri profumati nella pineta e tramonti adriatici da non dimenticare.", mapLabel: "Apri su Maps", mapQuery: "Spiaggia+Cavallino+Treporti,+Venezia" },
-        { title: "Attività All'aperto", desc: "Noleggio bici lungo percorsi costieri, escursioni in kayak nei canali silenziosi della laguna e birdwatching nella riserva naturale.", mapLabel: "Apri su Maps", mapQuery: "Oasi+Naturalistica+Cavallino+Treporti" },
-        { title: "Cibo & Vino", desc: "Cucina veneziana autentica, pesce freschissimo dell'Adriatico e il sacro rituale dello spritz serale.", mapLabel: "Apri su Maps", mapQuery: "Ristoranti+Cavallino+Treporti,+Venezia" },
+      narrative: [
+        { type: "text", value: "A pochi passi dall'appartamento puoi raggiungere " },
+        { type: "link", value: "Venezia e la Laguna", query: "Piazza+San+Marco,+Venezia" },
+        { type: "text", value: " in ferry, rilassarti sulla " },
+        { type: "link", value: "Spiaggia e nella pineta", query: "Spiaggia+Cavallino+Treporti,+Venezia" },
+        { type: "text", value: ", praticare " },
+        { type: "link", value: "Attività all'aperto", query: "Oasi+Naturalistica+Cavallino+Treporti" },
+        { type: "text", value: " in bici o kayak, oppure scoprire il " },
+        { type: "link", value: "Cibo e il vino", query: "Restaurants+Cavallino+Treporti,+Venezia" },
+        { type: "text", value: " del territorio." },
       ],
     },
     contact: { whatsappCta: "WhatsApp per prenotazioni", callIt: "Italia", callDe: "Deutschland" },
