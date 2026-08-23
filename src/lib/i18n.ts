@@ -23,7 +23,10 @@ type Dict = {
   amenities: { eyebrow: string; title: string; items: string[] };
   experiences: {
     eyebrow: string; title: string;
-    items: { title: string; desc: string; mapLabel: string; mapQuery: string }[];
+    narrative: (
+      | { type: "text"; value: string }
+      | { type: "link"; value: string; query: string }
+    )[];
   };
   contact: { whatsappCta: string; callIt: string; callDe: string };
   location: {
