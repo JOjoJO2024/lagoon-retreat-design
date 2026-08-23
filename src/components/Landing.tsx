@@ -298,29 +298,35 @@ function LandingInner() {
           <div className="mx-auto max-w-3xl divide-y divide-border/70 border-y border-border/70">
             {t.experiences.items.map((e, i) => (
               <Reveal key={e.title} delay={(i % 2) * 80}>
-                <article className="group grid grid-cols-[auto_1fr_auto] items-center gap-5 py-7 md:gap-8 md:py-9">
+                <a
+                  href={expMapUrl(e.mapQuery)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${e.title} — ${e.mapLabel}`}
+                  className="group grid grid-cols-[auto_1fr_auto] items-center gap-5 py-7 outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[var(--amber-brand)] md:gap-8 md:py-9"
+                >
                   <span className="font-serif text-sm text-primary tabular-nums">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div className="min-w-0">
-                    <h3 className="font-serif text-xl text-foreground md:text-2xl">{e.title}</h3>
+                    <h3 className="font-serif text-xl text-foreground transition-colors group-hover:text-[var(--amber-deep)] md:text-2xl">
+                      {e.title}
+                    </h3>
                     <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground md:text-base">{e.desc}</p>
+                    <span className="mt-2 inline-block text-xs uppercase tracking-[0.2em] text-[var(--amber-deep)] opacity-80">
+                      {e.mapLabel}
+                    </span>
                   </div>
-                  <a
-                    href={expMapUrl(e.mapQuery)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${e.mapLabel} — ${e.title}`}
-                    className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-[var(--amber-brand)]/60 text-[var(--amber-deep)] transition-colors hover:bg-[var(--amber-brand)]/15 md:h-11 md:w-11"
-                  >
+                  <span className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-[var(--amber-brand)]/60 text-[var(--amber-deep)] transition-colors group-hover:bg-[var(--amber-brand)]/15 md:h-11 md:w-11">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z" strokeLinecap="round" strokeLinejoin="round" />
                       <circle cx="12" cy="10" r="3" />
                     </svg>
-                  </a>
-                </article>
+                  </span>
+                </a>
               </Reveal>
             ))}
+
           </div>
         </div>
       </section>
